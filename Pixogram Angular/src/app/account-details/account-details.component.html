@@ -1,0 +1,29 @@
+<app-header [invalidLogin]="true"></app-header>
+
+<section class="container">
+    <div class="row m-4">
+        <div class="col-lg-4 mt-2">
+            <div class="sticky-top">
+                <app-user-card></app-user-card>
+                <div class="card text-center secondary-shadow mt-2">
+                    <div class="card-body">
+                        <p class="card-text d-flex flex-column">
+                            <a routerLink="/account-details/news-feed"
+                                class="btn btn-dark m-1 form-control text-white">Newsfeed</a>
+                            <a routerLink="/account-details/blocked-accounts"
+                                class="btn btn-dark m-1 form-control text-white">Blocked Accounts</a>
+                            <a routerLink="/account-details" class="btn btn-dark m-1 form-control text-white">Account Update</a>
+                            <a routerLink="/search" class="btn btn-dark m-1 form-control text-white">Search</a>
+                            <a routerLink="/" class="btn btn-dark m-1 form-control text-white">Logout</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 mt-2">
+            <div class="secondary-shadow bgDesign p-4">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>

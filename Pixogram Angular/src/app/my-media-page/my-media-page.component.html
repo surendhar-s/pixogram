@@ -1,0 +1,60 @@
+<app-header [invalidLogin]="true"></app-header>
+<section class="container">
+    <div class="row m-4">
+        <div class="col-lg-4 mt-2">
+            <div class="sticky-top">
+                <app-user-card></app-user-card>
+                <div class="card text-center secondary-shadow mt-2">
+                    <div class="card-body">
+                        <p class="card-text d-flex flex-column">
+                            <a routerLink="/upload-media" class="btn btn-dark m-1 form-control">Upload</a>
+                            <a routerLink="/my-media-page" class="btn btn-dark m-1 form-control">My Media</a>
+                            <a routerLink="/account-details/follow"
+                                class="btn btn-dark m-1 form-control">Followers/Following</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 mt-2">
+            <div class="secondary-shadow bgDesign p-4">
+                <div class="row align-items-center justify-content-between d-flex flex-sm-column flex-md-row">
+                    <div class="col-auto">
+                        <h3>Your media</h3>
+                        <h5 class="h2">Images & Videos</h5>
+                    </div>
+                    <div class="col-auto">
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons" *ngIf="!medias">
+                            <label class="btn btn-secondary active">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> Images
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="option2" autocomplete="off"> Videos
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="option3" autocomplete="off"> All
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="h5 text-center mt-3" *ngIf="medias?.length === 0">No Images or Videos uploaded</div>
+                <div class="row">
+                    <div class="col-md-6 col-12" *ngFor="let media of medias">
+                        <app-media-holder-card [mediaDetails]="media">
+                        </app-media-holder-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <div class="row">
+
+    <div class="col-lg-3 col-md-4 col-6" *ngFor="let media of medias">
+        <a href="#" class="d-block mb-4 h-100">
+            <div>
+                <img class="img-fluid" [src]="media.url" alt="">
+            </div>
+        </a>
+    </div>
+</div> -->

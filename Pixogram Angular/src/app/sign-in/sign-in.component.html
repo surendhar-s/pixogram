@@ -1,0 +1,41 @@
+<app-header [invalidLogin]="fasle"></app-header>
+<section class="container">
+    <div class="row m-4">
+        <div class="col-lg-8 mt-2">
+            <div class="shadow-lg bgDesign p-4">
+                <h5 class="h2">Sign-In Here</h5>
+                <form [formGroup]="rForm" class="pt-4" (ngSubmit)="onSubmit()">
+                    <div class="form-group row">
+                        <label for="username" class="col-3">User Name</label>
+                        <div class="col-9">
+                            <input [(ngModel)]="username" type="text" class="form-control" name="username" id="username"
+                                placeholder="Please enter your username!" formControlName="username"
+                                [class.is-invalid]="rForm.get('username').invalid && rForm.get('username').touched">
+                            <small class="text-danger"
+                                [class.d-none]="rForm.get('username').valid || !rForm.get('username').touched">This is a
+                                mandatory field.</small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-3">Password</label>
+                        <div class="col-9">
+                            <input [(ngModel)]="password" type="password" class="form-control" name="password"
+                                id="password" placeholder="Please enter your password!" formControlName="password"
+                                [class.is-invalid]="rForm.get('password').invalid && rForm.get('password').touched">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4"></div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-dark">Sign-In</button>
+                            <small *ngIf="invalidLogin" class="ml-3 text-danger">
+                                <br><h6>Invalid Username/Password!!!</h6>
+                            </small>
+                        </div>
+                    </div>
+                    <a routerLink="/register">New User, Click here to register!!!</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

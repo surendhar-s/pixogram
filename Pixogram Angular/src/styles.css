@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* * {
+    border: 1px solid red;
+} */
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('../src/assets/images/background.jpg')
+}
+
+.primary-shadow {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .3);
+}
+
+.secondary-shadow {
+    box-shadow: 0 0 25px rgba(0, 0, 0, .3);
+}
+
+.image-text-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.media-container {
+    position: relative;
+    text-align: center;
+}
+
+.top-left {
+    position: absolute;
+    top: 0px;
+    left: 2px;
+}
+
+.top-left {
+    position: absolute;
+    top: 0px;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 0px;
+    right: 0x;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.bgDesign{
+    background-color: gainsboro;
+}

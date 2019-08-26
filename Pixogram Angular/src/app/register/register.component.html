@@ -1,0 +1,61 @@
+<app-header [invalidLogin]="false"></app-header>
+<section class="container">
+    <div class="row m-4">
+        <div class="col-lg-8 mt-2">
+            <div class="shadow-lg bgDesign p-4">
+                <h5 class="h2">New User Registration</h5>
+                <form [formGroup]="rForm" class="pt-4" (ngSubmit)="onSubmit()">
+                    <div class="form-group row">
+                        <label for="username" class="col-3 col-form-label">User
+                            Name</label>
+                        <div class="col-6">
+                                <input [(ngModel)]="username" type="text" class="form-control" name="username" id="username" formControlName="username" [class.is-invalid]="rForm.get('username').invalid && rForm.get('username').touched" (focusout)="checkUserName()">
+                                <small class="text-danger" [class.d-none]="rForm.get('username').valid || !rForm.get('username').touched">This is a mandatory field.</small>
+                        </div>
+                        <div class="col-3">
+                        <section [class.d-none]="!rForm.get('username').touched || !rForm.get('username').valid">
+                            <small class="text-danger" [class.d-none]="validUser">Username is already taken, Please try differnet one!!.</small>
+                            <small class="text-success" [class.d-none]="!validUser">Username is available</small>
+                        </section>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="password" class="col-3 col-form-label">Password</label>
+                            <div class="col-9">
+                                <input [(ngModel)]="password" type="password" class="form-control" name="password" id="password" formControlName="password" [class.is-invalid]="rForm.get('password').invalid && rForm.get('password').touched">
+                                <div *ngIf="rForm.get('password').invalid && rForm.get('password').touched">
+                                    <small class="text-danger" *ngIf="rForm.get('password').errors.required">Please enter password</small>
+                                    <small class="text-danger" *ngIf="rForm.get('password').errors.minlength">Password must be atleast 5 character</small>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="rPassword" class="col-3 col-form-label">Retype Password</label>
+                            <div class="col-9">
+                                <input [(ngModel)]="rPassword" type="password" class="form-control" name="rPassword" id="rPassword" formControlName="rpassword">
+                                <div *ngIf="rForm.get('rpassword').invalid && rForm.get('rpassword').touched">
+                                    <small class="text-danger" *ngIf="rForm.get('rpassword').errors.required">Please enter password</small>
+                                </div>
+                                <div *ngIf="rForm.errors?.mismatch && (rForm.controls['rpassword'].dirty || rForm.controls['rpassword'].touched)">
+                                    <small class="text-danger">Password doesn't match</small>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-3 col-form-label">Email</label>
+                        <div class="col-9">
+                            <input [(ngModel)]="email" type="email" class="form-control " name="email" id="email" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3"></div>
+                        <div class="col-9">
+                            <button type="submit" [disabled]="!rForm.valid || !validUser" class="btn btn-dark" >Register</button>
+                        </div>
+                    </div>
+                    <a routerLink="/sign-in">Already Registered? Click here to Login!!!</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

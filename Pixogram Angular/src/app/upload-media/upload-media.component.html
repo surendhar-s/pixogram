@@ -1,0 +1,37 @@
+<app-header [invalidLogin]="true"></app-header>
+
+<section class="container">
+    <div class="row m-4">
+        <div class="col-lg-4 mt-2">
+            <div class="sticky-top">
+                <app-user-card></app-user-card>
+                <div class="card text-center secondary-shadow mt-2">
+                    <!-- <img src="./images/user-default-logo.png" class="card-img-top" alt=""> -->
+                    <div class="card-body">
+                        <p class="card-text d-flex flex-md-column flex-sm-row">
+                            <a routerLink="/upload-media" class="btn btn-dark m-1 form-control">Upload</a>
+                            <a routerLink="/my-media-page" class="btn btn-dark m-1 form-control">My Media</a>
+                            <a routerLink="/account-details/follow" class="btn btn-dark m-1 form-control">Followers</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card text-center secondary-shadow mt-2">
+                    <!-- <img src="./images/user-default-logo.png" class="card-img-top" alt=""> -->
+                    <div class="card-body">
+                        <p class="card-text d-flex flex-md-column flex-sm-row">
+                            <a routerLink="/upload-media/single-media" class="btn btn-dark m-1 form-control">Single
+                                Media</a>
+                            <a routerLink="/upload-media/multiple-media" class="btn btn-dark m-1 form-control">Multiple
+                                Media</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 mt-2">
+            <div class="secondary-shadow bgDesign p-4">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>

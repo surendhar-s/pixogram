@@ -1,0 +1,59 @@
+<app-header [invalidLogin]="true"></app-header>
+
+<section class="container">
+    <div class="row m-4">
+        <div class="col-lg-4 mt-2">
+            <div class="sticky-top">
+                <app-user-card></app-user-card>
+                <div class="card text-center secondary-shadow mt-2">
+                    <div class="card-body">
+                        <p class="card-text d-flex flex-column">
+                            <a routerLink="/account-details/news-feed"
+                                class="btn btn-dark m-1 form-control">Newsfeed</a>
+                            <a routerLink="/account-details/blocked-accounts"
+                                class="btn btn-dark m-1 form-control">Blocked Accounts</a>
+                            <a routerLink="/account-details" class="btn btn-dark m-1 form-control">Account Update</a>
+                            <a routerLink="/search" class="btn btn-dark m-1 form-control">Search</a>
+                            <a routerLink="/" class="btn btn-dark m-1 form-control">Logout</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8 mt-2">
+            <div class="secondary-shadow bg-light p-4">
+                <div class="row">
+                    <div class="col-12">
+                        <form class="p-4">
+                            <div class="form-group row">
+                                <div class="col-8">
+                                    <input class="form-control mt-2 lead" name="value" id="value" type="search"
+                                        placeholder="Search media, tags and users..." aria-label="Search"
+                                        [(ngModel)]="value">
+                                </div>
+                                <div class="col-auto">
+                                    <a (click)="searchUser()"
+                                        class="btn btn-dark text-white mt-2 form-control">Search</a>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="container" *ngIf="users?.length === 0">No User Found, Try search using more specific terms!!</div>
+
+                        <section class="container" *ngFor="let u of users">
+                            <div class="media-container">
+                                <img class="card-img-top img-fluid" src="https://dummyimage.com/600x600/cfcfcf/"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body text-center">
+                                <p class="badge badge-dark"><span class="lead">@{{u.name}}</span></p>
+                                <div class="text-white text-right"><button class="btn btn-dark text-white" (click)="follow(u.id)">Follow</button></div><br>
+                                <div class="text-white text-right"><button class="btn btn-danger text-white" (click)="blockUser(u.id)">Block</button></div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

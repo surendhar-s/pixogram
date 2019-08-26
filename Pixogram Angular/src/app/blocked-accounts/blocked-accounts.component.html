@@ -1,0 +1,21 @@
+<h5 class="h2">Blocked Users</h5>
+<div class="row mt-5">
+    <div class="col-sm-12 col-md-6 col-12" *ngFor="let b of blockedUserDetails">
+        <div class="card mb-3">
+            <div class="media-container">
+                <img class="card-img-top img-fluid" src="https://dummyimage.com/600x600/cfcfcf/" alt="Card image cap">
+            </div>
+            <div class="card-body text-center">
+                <p class="badge badge-dark"><span class="lead">@{{b.name}}</span></p>
+                <button class="btn btn-dark m-1 form-control" *ngIf="toggle.get(b.id)"
+                    (click)="unblockUser(b.id)">Unblock</button>
+                <button class="btn btn-dark m-1 form-control" *ngIf="!toggle.get(b.id)"
+                    (click)="blockUser(b.id)">Block</button>
+            </div>
+        </div>
+        <div *ngIf="blockedUserDetails.length == 0" class="text-center">
+            <span class="h6">No blocked Users</span>
+
+        </div>
+    </div>
+</div>

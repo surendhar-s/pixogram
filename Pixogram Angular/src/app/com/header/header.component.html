@@ -1,0 +1,11 @@
+<header class="primary-shadow bg-secondary" >
+    <nav class="navbar navbar-expand-lg navbar-light d-lg-flex flex-lg-row justify-content-lg-between">
+        <a class="navbar-brand" routerLink="/my-media-page">
+            <h1>Pixogram</h1>
+        </a>
+        <div>
+            <a routerLink="/account-details" *ngIf="invalidLogin" role="button" class="btn btn-outline-dark">Account</a>
+            <a *ngIf="invalidLogin" role="button" class="btn btn-outline-dark ml-2" (click) = "logout()">Logout</a>
+        </div>
+    </nav>
+</header>

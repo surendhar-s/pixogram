@@ -1,0 +1,42 @@
+<h5 class="h2">Account Update</h5>
+<div class=" "></div>
+<form class="pt-4" (ngSubmit)="onSubmit()" [formGroup]="rForm" name="myform">
+    <div class="form-group row">
+        <label for="password" class="col-3 col-form-label">Password</label>
+        <div class="col-9">
+            <input [(ngModel)]="password" type="password" class="form-control" name="password" id="password"
+                placeholder="Enter new password" autocomplete="off" formControlName="password">
+            <div *ngIf="rForm.get('password').invalid && rForm.get('password').touched">
+                <small class="text-danger" *ngIf="rForm.get('password').errors.required">Please enter password</small>
+                <small class="text-danger" *ngIf="rForm.get('password').errors.minlength">Password must be atleast 5
+                    character</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row align-items-center">
+        <div class="col-9 offset-3">
+            <input [(ngModel)]="rPassword" type="password" class="form-control" name="rPassword" id="rPassword"
+                placeholder="Enter password again" autocomplete="off" formControlName="rPassword">
+            <div *ngIf="rForm.get('rPassword').invalid && rForm.get('rPassword').touched">
+                <small class="text-danger" *ngIf="rForm.get('rPassword').errors.required">Please enter password</small>
+            </div>
+            <div
+                *ngIf="rForm.errors?.mismatch && (rForm.controls['rPassword'].dirty || rForm.controls['rPassword'].touched)">
+                <small class="text-danger">Password doesn't match</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="email" class="col-3 col-form-label">Email</label>
+        <div class="col-9">
+            <input [(ngModel)]="email" type="email" class="form-control " name="email" id="email"
+                placeholder="Enter email" formControlName="email">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-3"></div>
+        <div class="col-9">
+            <button [disabled]="!rForm.valid" class="btn text-white btn-dark">Update</button>
+        </div>
+    </div>
+</form>

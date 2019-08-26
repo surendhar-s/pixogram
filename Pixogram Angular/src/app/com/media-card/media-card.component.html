@@ -1,0 +1,54 @@
+<form (ngSubmit)="upload()">
+    <div class="row mt-2">
+        <div class="col">
+            <div class="text-center" *ngIf="selectedFiles">
+                <img *ngIf="!imgURL" width="100%" height="350px">
+                <img class="img-fluid" [src]="imgURL" *ngIf="imgURL" height="250px">
+                <div *ngIf="!imgURL" class="image-text-centered lead">Drop image here</div>
+                <div class="text-danger lead" *ngIf="message">{{message}}</div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="currentFileUpload" class="progress mt-2">
+        <div class="progress-bar progress-bar-info progress-bar-striped bg-dark" role="progressbar"
+            attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{width:progress.percentage+'%'}">
+            {{progress.percentage}}%</div>
+    </div>
+    <hr>
+    <div class="card-text d-flex mb-2">
+        <label class="btn btn-dark m-1 form-control">
+            <input type="file" (change)="selectFile($event)" />
+            Browse
+        </label>
+        <button type="submit" class="btn btn-dark m-1 form-control" [disabled]="!selectedFiles">Upload</button>
+    </div>
+    <div class="form-group row">
+        <label for="title" class="col-3 col-form-label">Title</label>
+        <div class="col-9">
+            <input [(ngModel)]="title" type="text" class="form-control" name="title" id="title" required placeholder="Title for your photo" autocomplete="off">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="description" class="col-3 col-form-label">Description</label>
+        <div class="col-9">
+            <textarea [(ngModel)]="description" rows="3" cols="50" class="form-control" name="description"
+                id="description" required placeholder="Short description about that media"></textarea>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="tags" class="col-3 col-form-label">Tags</label>
+        <div class="col-9">
+            <input [(ngModel)]="tags" type="text" class="form-control" name="tags" id="tags" required placeholder="Hashtags" autocomplete="off">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col d-flex justify-content-center lead">
+            <button class="badge badge-dark m-1">Sepia</button>
+            <button class="badge badge-dark m-1">Gray</button>
+            <button class="badge badge-dark m-1">Brightness</button>
+            <button class="badge badge-dark m-1">Contrast</button>
+        </div>
+    </div>
+    <hr>
+</form>

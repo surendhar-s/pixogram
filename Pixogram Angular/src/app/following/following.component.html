@@ -1,0 +1,14 @@
+<div class="row mt-5">
+    <div class="col-md-6 col-12" *ngFor="let f of followingsUserDetails">
+        <div class="card mb-3">
+            <div class="media-container">
+                <img class="card-img-top img-fluid" src="https://dummyimage.com/600x600/cfcfcf/" alt="Card image cap">
+            </div>
+            <div class="card-body text-center">
+                <p class="badge badge-dark"><span class="lead">@{{f.name}}</span></p><br>
+                <button class="btn btn-secondary text-white m-2" (click)="unFollow(f.id)">Unfollow</button>
+                <button class="btn btn-danger text-white" (click)="blockUser(f.id)">Block</button>
+            </div>
+        </div>
+    </div>
+</div>
